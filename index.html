@@ -20,10 +20,14 @@
   <div class="container py-2">
     <p class="lead">Ingrese Mercaderia</p>
     <form>
-      <input id="codigo" type="number" placeholder="Ingresa el Codigo" class="form-control my-2">
+      <input id="codigo" type="number" placeholder="Ingresa el Codigo" class="form-control my-2"></input>
       <input id="descripcion" type="text" placeholder="Ingresa el Nombre" class="form-control my-2">
       <input id="rubro" type="text" placeholder="Ingresa el Rubro" class="form-control my-2">
-      <input id="costo" type="number" placeholder="Ingresa el Costo" class="form-control my-2">
+      </form>
+      <form oninput="precio.value=(parseInt(rentabilidad.value) * parseInt(costo.value)/100)+parseInt(costo.value)">
+      <input type="number" id="costo" placeholder="Ingresa el Costo" class="form-control my-2"/>
+      <input type="number" id="rentabilidad" placeholder="Expresado en numero" class="form-control my-2"/>
+      <output type="number" id="precio" for="costo rentabilidad costo" class="form-control my-2"></output>
       <button id="boton" class="btn btn-success" type="reset" onclick="agregar();">Agregar</button>
     </form>
   </div>
@@ -35,6 +39,8 @@
         <th>Descripción</th>
         <th>Rubro</th>
         <th>Costo</th>
+        <th>Rentabilidad</th>
+        <th>Precio de Venta</th>
         </tr>
         <tr>
       </thead>
