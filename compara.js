@@ -27,14 +27,10 @@ function agregar(e) {
         rentabilidadAgregar,
         precioAgregar
     );
+
     console.log(nuevaMercaderia);
     baseDatos.push(nuevaMercaderia);
 
-    let index = baseDatos.length;
-if (codigoAgregar ==='' || descripcionAgregar === '' || rubroAgregar === '' || costoAgregar === '' || rentabilidadAgregar === ''){
-    return alert('Debes completar los campos');
-
-}
        document.getElementById("tbody").innerHTML += `
         <tr>
             <th>${nuevaMercaderia.codigo}</th>
@@ -43,34 +39,14 @@ if (codigoAgregar ==='' || descripcionAgregar === '' || rubroAgregar === '' || c
             <th>${nuevaMercaderia.costo}</th>
             <th>${nuevaMercaderia.rentabilidad}</th>
             <th>${nuevaMercaderia.precio}</th>
-            <th><button data-index="${index}" type="button" name="eliminar" class="btn btn-danger btn-delete">Eliminar</button></th>
+            <button id="eliminar" class="btn btn-danger">Eliminar</button>
+
         </tr>
     `;
-   function reiniciarFormulario() {
-        document.getElementById('formulario').reset();
-    }
-    reiniciarFormulario();
 
-    var list = document.getElementsByClassName("btn-delete");
-    for (var i = 0; i < list.length; i++) {
-        list[i].onclick = null;
-        list[i].addEventListener('click', function(e){
-            e.target.parentElement.parentElement.remove();
+
+    document.getElementById('eliminar').addEventListener('click', function(e){
+        const ui = new UI();
+        ui.eliminarProducto(element.target);
         });
     }
-
-   
-}
-
-function mostrarMensaje(message , cssClass){
-    const div = document.createElement('div');
-    div.className =`alert alert-${cssClass}`;
-    div.appendChild(document.createTextNode(message));
-
-   const container = document.querySelector('.container py-2');
-   const p = document.querySelector('.lead');
-   const msg = container.insertBefore(div,p);
-
-   mostrarMensaje('Producto Agregado', 'success');
-
-}
